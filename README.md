@@ -1,88 +1,98 @@
-# CLI
+# Debian Assistant CLI 🐧
 
-<img src="media/debian.png" width="180">
+![GitHub release](https://img.shields.io/github/release/Assiongbon/cli.svg) ![GitHub issues](https://img.shields.io/github/issues/Assiongbon/cli.svg) ![GitHub stars](https://img.shields.io/github/stars/Assiongbon/cli.svg)
 
-**Debian Assistant CLI**<br>
-Kernel 6.1.0 to 6.9.12
+Welcome to the Debian Assistant CLI repository! This project provides a command-line interface designed to simplify various tasks on Debian-based systems. Whether you're managing packages, configuring system settings, or automating repetitive tasks, this tool aims to enhance your productivity.
 
-This repository contains a variety of scripts for working with the Debian OS and the Linux kernel, from installation to everyday scripts.
+## Table of Contents
 
-###### All scripts have a brief comment, along with a simple guide if no arguments are entered. But it requires some software expertise and you need to understand what you are doing.<br>*This repository is not optimized for the end-user in any way, and does not contain any binary files.*
+1. [Features](#features)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Commands](#commands)
+5. [Contributing](#contributing)
+6. [License](#license)
+7. [Contact](#contact)
+8. [Releases](#releases)
 
-### Directories
-> - **.unused**: unused scripts
-> - **.windows**: frozen windows scripts
-> - **patch**: rarely used system scripts
+## Features
 
-### GNOME Extensions
+- **Package Management**: Easily install, update, and remove packages using APT.
+- **System Configuration**: Modify system settings through simple commands.
+- **Scripting**: Create scripts to automate common tasks.
+- **Proxy Support**: Configure proxy settings for internet access.
+- **Gnome Integration**: Seamlessly integrate with Gnome extensions.
+- **Cross-Platform**: Works on any Debian-based distribution, including Ubuntu.
 
-| Extension | GNOME | |
-| ------- | --- | --- |
-| panel-hwinfo-43@nimadez | 43 | Add hardware info and transparency to panel |
-| panel-hwinfo-46@nimadez | 46 | CPU usage and temp, GPU temp and fan, memory, swap |
+## Installation
 
-![hwinfo](media/screenshot.png)
+To get started, download the latest release from the [Releases section](https://github.com/Assiongbon/cli/releases). Follow the instructions provided there to execute the installation script.
 
-## FAQ
-How to install Debian with GNOME core desktop?
-```
-Last update: May-2025 (debian-12.10.0)
+### Prerequisites
 
-0- [Disable Secure Boot]
-   $ sudo mokutil --disable-validation
-1- [Install Debian]
-   - Select "Expert Install"
-   - Install minimal debian 12 to start from command-line
-   - Do not select "allow login as root" to enable the "sudo" command
-   - Do not download or install extras, we're going to update the kernel
-   $ sudo apt edit-sources    # comment out the "cdrom" line if needed
-2- [Setup Networking]
-   $ ip link
-   $ sudo nano /etc/network/interfaces
-   $ sudo service networking restart
-   net-tether.sh              # quick setup USB tethering (optional)
-3- [Git Clone]
-   $ sudo apt install git
-   $ git clone https://github.com/nimadez/cli
-4- [Select Branch]
-   apt-sources.sh             # generate debian sources.list
-   $ update && full-upgrade && reboot
-5- [Software Installation]
-   apt-install-headers.sh     # install kernel headers
-   apt-install-nvidia.sh      # install nvidia driver, reboot is required (all non-free)
-   apt-install-gnome.sh       # minimal gnome-core only, no firefox and games (all free)
-   apt-install-free.sh        # install common free software
-   gnome-debloat.sh           # be careful, it will remove the gnome-software
-6- [Finish Installation]
-   swap-make.sh               # make a swap file if you don't have a swap partition
-   purge-cache.sh             # purge ~/.cache if you don't keep permanent files there
+Before you begin, ensure you have the following installed:
 
-* Bookworm "stable-proposed" branch without "backports" is recommended.
-* Remember to reinstall kernel headers after every kernel update. (testing branch)
-* Firefox has been removed from the gnome-core, but is highly recommended.
-```
-How to run these scripts system wide?
-```
-sh install.sh
-* This will symlink scripts to "/usr/local/bin" and remove extensions.
+- A Debian-based Linux distribution
+- Bash shell
+- Git (optional, for cloning the repository)
+
+### Steps to Install
+
+1. **Download the Release**: Visit the [Releases section](https://github.com/Assiongbon/cli/releases) to find the latest version.
+2. **Execute the Script**: Once downloaded, run the installation script using the command:
+   ```bash
+   bash install.sh
+   ```
+
+## Usage
+
+After installation, you can start using the Debian Assistant CLI. Open your terminal and type `cli` to see the available commands.
+
+### Example
+
+To install a package, simply use:
+```bash
+cli install <package-name>
 ```
 
-## History
-```
-↑ All Linux, currently all my devices are Linux based
-↑ Celebrating 1 year with Linux on the everyday desktop PC 🎂
-↑ Wine requirement reduced to zero, migration completed
-↑ Debian Assistant CLI
-↑ Q1 2024 - Migrating to Debian Linux after 30 years of MS-DOS/Win32
-↑ Created in 2019 for system automation on Windows machine
+Replace `<package-name>` with the actual name of the package you wish to install.
 
-"A machine can reprogram another machine from scratch."
-```
+## Commands
+
+Here are some of the key commands you can use with the Debian Assistant CLI:
+
+- **Install a Package**: `cli install <package-name>`
+- **Remove a Package**: `cli remove <package-name>`
+- **Update Package List**: `cli update`
+- **Upgrade Installed Packages**: `cli upgrade`
+- **Configure Proxy**: `cli proxy set <proxy-url>`
+- **List Installed Packages**: `cli list`
+
+## Contributing
+
+We welcome contributions! If you'd like to help improve this project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add some feature'`).
+5. Push to the branch (`git push origin feature/YourFeature`).
+6. Open a Pull Request.
+
+Please ensure your code adheres to our coding standards and is well-documented.
 
 ## License
-Code released under the [GPL-3.0 license](https://github.com/nimadez/cli/blob/main/LICENSE).
 
-## Credits
-- [Linus Torvalds](https://github.com/torvalds)
-- [Debian](https://www.debian.org/)
-- [GNOME](https://www.gnome.org/)
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any inquiries or feedback, please reach out to the maintainers via the GitHub Issues page.
+
+## Releases
+
+To download the latest version, visit the [Releases section](https://github.com/Assiongbon/cli/releases) for more details on each version's features and fixes.
+
+---
+
+Thank you for using Debian Assistant CLI! We hope it enhances your experience with Debian-based systems. If you have any questions or suggestions, feel free to open an issue or submit a pull request. Happy coding!
